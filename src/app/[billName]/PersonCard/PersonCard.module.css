@@ -1,0 +1,34 @@
+
+.container {
+    background: var(--secondary);
+    width: min-content;
+    padding: .5rem 1rem;
+    border-radius: 1rem;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+}
+
+.container input {
+    all: unset;
+    width: 80px;
+}
+
+.container input:focus {
+    color: var(--white);
+}
+
+.add {
+    cursor: pointer;
+}
+
+
+.container button {
+    all: unset;
+    cursor: pointer;
+}
+
+.container button:hover, .add:hover {
+    color: var(--white);
+}

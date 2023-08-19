@@ -1,0 +1,97 @@
+
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+    background: white;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.25rem;
+    border-radius: 0.5rem;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    transition: .25s ease-in-out;
+    transition-delay: .1s;
+}
+
+/*.container:hover {*/
+/*    cursor: pointer;*/
+/*    box-shadow: 0px 0px 10px 0px var(--shadow);*/
+/*    background: var(--danger);*/
+/*    scale: 1.005;*/
+/*}*/
+
+.iconOuterContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    /*font-weight: 600;*/
+    color: white;
+    font-size: 1.5rem;
+}
+
+.boldTitle {
+    font-weight: 600;
+}
+
+.leftSide {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    justify-content: start;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: .25rem;
+}
+
+.amount {
+    font-size: 1.5rem;
+    font-weight: 600;
+    min-width: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+}
+
+.deleteButton {
+    font-size: 1.5rem;
+    padding: .5rem;
+    background: none;
+    color: var(--danger);
+    font-weight: bold;
+    transition: .2s ease-in-out;
+}
+
+.deleteButton:hover {
+    cursor: pointer;
+    scale: 1.2;
+}
+
+@media (max-width: 768px) {
+    .container {
+        font-size: 1rem;
+    }
+
+    .amount {
+        font-size: 1.25em;
+    }
+}

@@ -12,11 +12,21 @@
     "@types/node": "20.5.0",
     "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",
+    "bootstrap": "^5.3.1",
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.16",
     "next": "13.4.16",
     "react": "18.2.0",
+    "react-bootstrap": "^2.8.0",
+    "react-currency-input-field": "^3.6.11",
     "react-dom": "18.2.0",
-    "typescript": "5.1.6"
+    "react-icons": "^4.10.1",
+    "react-id-generator": "^3.0.2",
+    "react-select": "^5.7.4",
+    "typescript": "5.1.6",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/uuid": "^9.0.2"
   }
 }

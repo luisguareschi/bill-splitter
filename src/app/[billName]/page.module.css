@@ -1,0 +1,69 @@
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    min-height: calc(100vh - 5rem);
+    background: var(--white);
+    padding: 1.5rem 1.5rem;
+    width: 100%;
+    gap: 1rem;
+    margin-top: 5rem;
+}
+
+.peopleOuterContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.peopleOuterContainer h1 {
+    color: var(--darkBlue);
+    font-weight: 600;
+}
+
+.headerTitle {
+    font-size: 1.5rem;
+    color: var(--darkBlue);
+    font-weight: 600;
+}
+
+.peopleContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 1rem;
+    border-radius: .5rem;
+    background: #ffff;
+    align-items: center;
+}
+
+.transactionsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 1rem;
+    width: 100%;
+    margin-bottom: .5rem;
+}
+
+.transactionButton {
+    all: unset;
+    background: var(--secondary);
+    width: fit-content;
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
+    border-radius: .5rem;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .transactionButton {
+        width: unset;
+    }
+}

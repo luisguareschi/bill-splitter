@@ -1,0 +1,37 @@
+
+.button {
+    all: unset;
+    cursor: pointer;
+    padding: .75rem 1rem;
+    border-radius: 0.5rem;
+}
+
+.primary {
+    background: var(--primary);
+    color: white;
+}
+
+.secondary {
+    background: var(--secondary)
+}
+
+.info {
+    background: var(--info);
+}
+
+.success {
+    background: var(--success);
+}
+
+.warning {
+    background: var(--warning);
+}
+
+.danger {
+    background: var(--danger);
+    color: white;
+}
+
+.grey {
+    background: var(--grey);
+}

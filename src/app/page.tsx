@@ -1,95 +1,90 @@
+"use client";
 import Image from 'next/image'
 import styles from './page.module.css'
+import {useRouter} from "next/navigation";
+import {useEffect, useState} from "react";
+import {bill} from "@/types";
+import Button from "@/components/Button/Button";
 
 export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    const router = useRouter()
+    const [billName, setBillName] = useState<string>('')
+    const [bills, setBills] = useState<bill[]>([])
+
+    useEffect(() => {
+        const b: bill[] = JSON.parse(localStorage.getItem('bills') || '[]')
+        setBills(b)
+    }, [])
+
+    const handleCreateBill = () => {
+        if (billName === '') {
+            alert("Please enter a bill name")
+            return
+        }
+
+        if (bills.find(bill => bill.name === billName)) {
+            alert("Bill name already exists")
+            return
+        }
+
+        let bs = [...bills]
+        let bill: bill = {
+            name: billName,
+            persons: [],
+            transactions: []
+        }
+        bs.push(bill)
+        localStorage.setItem('bills', JSON.stringify(bs))
+        router.push(`/${billName}`)
+    }
+
+    const handleDeleteBill = (event:any, billName:string) => {
+        event.stopPropagation()
+        const result = confirm("Are you sure you want to delete this bill?")
+        if (!result) {
+            return
+        }
+        let bs = [...bills]
+        bs = bs.filter(bill => bill.name !== billName)
+        localStorage.setItem('bills', JSON.stringify(bs))
+        setBills(bs)
+    }
+
+    return (
+        <div className={styles.container}>
+            <div className={styles.title}>
+                Bill Splitter
+            </div>
+            <div className={styles.subtitle}>
+                Create a bill and split it between friends
+            </div>
+            <div className={styles.billsContainer}>
+                <h6>My bills</h6>
+                <div className={styles.topRow}>
+                    <input placeholder={'Bill name'} value={billName}
+                           onChange={(event:any) => setBillName(event.target.value)}/>
+                    <button className={styles.button} onClick={handleCreateBill}>
+                        Create Bill
+                    </button>
+                </div>
+                <div className={styles.bills}>
+                    {bills.length === 0 && (
+                        <p className={styles.bill}>No bills</p>
+                    )}
+                    {bills.map((bill, index) => {
+                        return (
+                            <div key={index} className={styles.bill} onClick={() => router.push(`/${bill.name}`)}>
+                                {bill.name}
+                                <Button onClick={(event:any) => {handleDeleteBill(event, bill.name)}}
+                                        variant={'danger'} className={styles.deleteBill}>
+                                    X
+                                </Button>
+                            </div>
+                        )
+                    })}
+                </div>
+            </div>
+
         </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    )
 }
