@@ -84,6 +84,11 @@
     padding: .5rem 1rem;
     border: 1px solid var(--grey);
     border-top-color: white;
+    cursor: pointer;
+}
+
+.bill:hover {
+    background: var(--grey);
 }
 
 .deleteBill {
