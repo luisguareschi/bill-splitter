@@ -53,7 +53,7 @@ const SplitPage = ({params}: { params: { billName: string } }) => {
             <div className={styles.container}>
                 <div className={styles.peopleOuterContainer}>
                     <h1>Bill: {billName}</h1>
-                    <p className={styles.headerTitle}>People to split with:</p>
+                    <p className={styles.headerTitle}>People to split with: {persons.length}</p>
                     <div className={styles.peopleContainer}>
                         {persons.length === 0 && (
                             <div>Add a participant</div>

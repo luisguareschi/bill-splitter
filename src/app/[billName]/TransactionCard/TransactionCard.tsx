@@ -47,7 +47,7 @@ const TransactionCard = ({transaction, persons, setTransactions, transactions}:p
                     <div className={styles.payer}>
                         By: <span className={styles.boldTitle}>{payer}</span>
                     </div>
-                    {description} | {personsNames.map(p => p.name).join(', ')}
+                    {description} | {personsNames.length === persons.length ? "Everyone" : personsNames.map(p => p.name).join(", ") }
                 </div>
             </div>
             <div className={styles.amount}>
